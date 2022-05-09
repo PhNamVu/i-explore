@@ -53,6 +53,7 @@ const UpdateScreen = () => {
           },
         },
         refetchQueries: [{ query: AllEventsDocument }],
+        fetchPolicy: "no-cache",
       });
       resetForm();
 
@@ -105,6 +106,7 @@ const UpdateScreen = () => {
               touched,
               resetForm,
               isValid,
+              setFieldValue,
             }) => (
               <View>
                 <Input
@@ -173,7 +175,9 @@ const UpdateScreen = () => {
                       value={new Date(values.date)}
                       mode="date"
                       is24Hour={true}
-                      onChange={() => handleChange("date")}
+                      onChange={(event: any, selectedDate: any) =>
+                        setFieldValue("date", selectedDate)
+                      }
                     />
                   </View>
                   <View mt={5}>
@@ -182,7 +186,9 @@ const UpdateScreen = () => {
                       value={new Date(values.date)}
                       mode="time"
                       is24Hour={true}
-                      onChange={() => handleChange("date")}
+                      onChange={(event: any, selectedDate: any) =>
+                        setFieldValue("date", selectedDate)
+                      }
                     />
                   </View>
                 </Flex>

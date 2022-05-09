@@ -35,8 +35,9 @@ const UploadScreen = () => {
           },
         },
         refetchQueries: [{ query: AllEventsDocument }],
+        fetchPolicy: "no-cache",
       });
-      resetForm();      
+      resetForm();
       positiveToast("Post Successful");
     } catch (error) {
       negativeToast("Fail");
@@ -80,6 +81,7 @@ const UploadScreen = () => {
               touched,
               resetForm,
               isValid,
+              setFieldValue,
             }) => (
               <View>
                 <Input
@@ -147,7 +149,9 @@ const UploadScreen = () => {
                       value={values.date}
                       mode="date"
                       is24Hour={true}
-                      onChange={() => handleChange("date")}
+                      onChange={(event: any, selectedDate: any) =>
+                        setFieldValue("date", selectedDate)
+                      }
                     />
                   </View>
                   <View mt={5}>
@@ -156,7 +160,9 @@ const UploadScreen = () => {
                       value={values.date}
                       mode="time"
                       is24Hour={true}
-                      onChange={() => handleChange("date")}
+                      onChange={(event: any, selectedDate: any) =>
+                        setFieldValue("date", selectedDate)
+                      }
                     />
                   </View>
                 </Flex>

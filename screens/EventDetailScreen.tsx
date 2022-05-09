@@ -15,7 +15,6 @@ import {
 } from "native-base";
 import React, { useEffect, useState } from "react";
 import { AntDesign, MaterialCommunityIcons } from "@expo/vector-icons";
-import { Entypo } from "@expo/vector-icons";
 
 import { negativeToast, positiveToast } from "../helpers/toaster";
 
@@ -52,6 +51,7 @@ const EventDetailScreen = () => {
         },
       },
     ],
+    fetchPolicy: "no-cache",
   });
 
   useEffect(() => {}), [data];
